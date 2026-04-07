@@ -11,9 +11,16 @@ public class AsteroidManager : MonoBehaviour
     private float spawnInterval = 2f;
     [SerializeField]
     private UnityEvent<Transform> onAsteroidDestroyed;
+    [SerializeField]
+    private int numberOfAsteroids = 10;
     private void Start()
     {
-        InvokeRepeating("SpawnAsteroid", spawnInterval, spawnInterval);
+        float iniialDelay = 0f;
+        for (int i = 0; i < numberOfAsteroids; i++)
+        {
+            Invoke("SpawnAsteroid", iniialDelay);
+            iniialDelay += spawnInterval;
+        }
     }
     private void SpawnAsteroid()
     {
@@ -24,8 +31,6 @@ public class AsteroidManager : MonoBehaviour
         Asteroid asteroid = asteroidPool.GetCurrentObject().GetComponent<Asteroid>();
         asteroid.SetTarget(target);
         asteroid.OnAsteroidDestroyed.AddListener(OnAsteroidDestroyed);
-        spawnInterval = Random.Range(1f, 3f);
-        Invoke("SpawnAsteroid", spawnInterval);
     }
     public void OnAsteroidDestroyed(Transform asteroid)
     {

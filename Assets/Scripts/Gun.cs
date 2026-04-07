@@ -33,5 +33,6 @@ public class Gun : MonoBehaviour
         Transform bullet = bulletPool.GetCurrentObject().transform;
         bullet.transform.LookAt(targetPoint);
         animator.Play("Shoot", 0, 0f);
+        SoundManager.instance.Play("laser");
     }
 }
