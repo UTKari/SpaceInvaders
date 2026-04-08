@@ -45,6 +45,7 @@ public class Asteroid : MonoBehaviour
         {
             Vector3 direction = (target.position - transform.position).normalized;
             transform.position += direction * speed * Time.deltaTime;
+            transform.LookAt(target);
             if (Vector3.Distance(transform.position, target.position) <= distanceToTarget)
             {
                 target.GetComponent<Health>().TakeDamage(asteroidDamage);
