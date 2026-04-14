@@ -13,21 +13,38 @@ public class SpaceshipManager : MonoBehaviour
     [SerializeField]
     private InstantiatePoolObjects bulletPool;
     [SerializeField]
+    private UnityEvent onInstantiateShip;
+    [SerializeField]
     private float timeToSpawn = 15f;
     [SerializeField]
     private UnityEvent<Transform> onShipDestroyed;
+    [SerializeField]
+    private UnityEvent onAllShipsDestroyed;
+    private int destroyedSpaceships = 0;
     public void OnDestroyShip(Transform transform)
     {
+        destroyedSpaceships++;
         onShipDestroyed.Invoke(transform);
+        if (destroyedSpaceships >= numberOfSpaceships)
+        {
+            onAllShipsDestroyed?.Invoke();
+        }
     }
-    private void Start()
+    public void StartShips()
     {
         StartCoroutine(SpawnSpaceships());
     }
+    public void StopShips()
+    {
+        StopAllCoroutines();
+        spaceshipPool.DeactivateAllObjects();
+    }
+
     private IEnumerator SpawnSpaceships()
     {
         numberOfSpaceships--;
         yield return new WaitForSeconds(timeToSpawn);
+        onInstantiateShip?.Invoke();
         spaceshipPool.InstantiateObject(transform);
         EnemySpaceship spaceship = spaceshipPool.GetCurrentObject().GetComponent<EnemySpaceship>();
         spaceship.TargetHealth = playerHealth;
