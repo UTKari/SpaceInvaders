@@ -77,6 +77,8 @@ MonoBehaviour:
   bulletPivot: {fileID: 5188458747067868234}
   flyAnimationNames:
   - Fly1
+  - Fly2
+  - Fly3
   animator: {fileID: 6648326959505688622}
   targetHealth: {fileID: 0}
   health: {fileID: 7794663368736484506}
@@ -100,19 +102,7 @@ MonoBehaviour:
   _maxHealth: 50
   _onTakeDamage:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: H
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _onDie:
     m_PersistentCalls:
       m_Calls:
@@ -126,18 +116,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: D
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!135 &5382723895018207490
@@ -675,7 +653,7 @@ Transform:
   m_GameObject: {fileID: 9193864894398344097}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.249, y: 0.486, z: 0}
+  m_LocalPosition: {x: 1.38, y: 0.486, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
